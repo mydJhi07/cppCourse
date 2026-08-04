@@ -7,17 +7,26 @@ int main()
     int N = 0;
     std::cin >> N;
 
-    for (int i = 1; i <= N; i++)
+    // KOREKSI !!
+
+    // --- 1. LOGIKA BILANGAN PRIMA ---
+    bool isPrime = true;
+
+    if (N <= 1)
     {
-        if (i > 1 && i <= std::sqrt(N) && N % i == 0)
+        isPrime = false;
+    }
+    else
+    {
+        // Cukup periksa pembagi dari 2 hingga akar kuadrat N
+        for (int i = 2; i <= std::sqrt(N); i++)
         {
-            std::cout << N << " bukan bilangan prima\n";
-            break;
-        }
-        else if (i > 1 && i <= std::sqrt(N) && N % i != 0)
-        {
-            std::cout << N << " bilangan prima\n";
-            break;
+            if (N % i == 0)
+            {
+                // Jika bisa dibagi angka lain, berarti BUKAN prima
+                isPrime = false;
+                break; // Langsung berhenti mencari
+            }
         }
     }
 
